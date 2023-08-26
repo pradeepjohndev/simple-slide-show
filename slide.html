@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slideshow</title>
+    <style>
+    .slideshow-container {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+    .slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+    img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+    .fade {
+    animation-name: fade;
+    animation-duration: 2s;
+}
+
+    @keyframes fade {
+      from {
+        opacity: 0.4;
+    }
+      to {
+        opacity: 1;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img src="img1.jpg" alt="Image 1" style="background-size: cover;">
+        </div>
+        <div class="slide fade">
+            <img src="img2.jpg" alt="Image 2">
+        </div>
+        <div class="slide fade">
+            <img src="img3.jpg" alt="Image 3">
+        </div>
+        <div class="slide fade">
+            <img src="img4.jpg" alt="Image 4">
+        </div>
+    </div>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+         const slides = document.querySelectorAll(".slide");
+         slides.forEach(slide => slide.style.display = "none");
+         slideIndex = (slideIndex + 1) % slides.length;
+         slides[slideIndex].style.display = "block";
+         setTimeout(showSlides, 2000);
+}
+
+    </script>
+</body>
+</html>
